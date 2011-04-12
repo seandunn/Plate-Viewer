@@ -1,0 +1,116 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+@import "blueprint/ie";
+@include blueprint-ie;
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Combine the partials into a single screen stylesheet.
+@import "partials/page";
+@import "partials/form";
+/*@import "partials/two_col";*/
+@import "blueprint/liquid";
+
+// Compass Utils
+@import "compass/css3/box-shadow";
+@import "compass/utilities/lists/horizontal-list";
+@import "compass/utilities/links/hover-link";
+@import "compass/css3/border-radius";
+
+body {
+  background: #E3EEFC;
+  font-family: 'Lucida Grande',helvetica,arial,sans-serif;
+}
+
+.container {
+  width: 100%;
+}
+
+a {
+  @include hover-link;
+  @include link-colors(#fff, #ff0);
+}
+
+#header-top {
+  @include column(24,true);
+  background: -moz-linear-gradient(center top , #31353D, #212429);
+   border-top: 3px solid #055694;
+   color: #EFEFEF;
+   font-size: 12px;
+   
+  #quick-links {
+    @include horizontal-list;
+    @include prepend(3);
+      @include column(16);
+  }
+  
+  #user-links { 
+    @include column(5,true); 
+  }
+  
+}
+
+#header-middle {
+  @include column(24,true);
+  background: -moz-linear-gradient(center top , #004578, #0085BC);
+  color: #fff;
+  height: 36px;
+  #logo-container {
+    text-transform: uppercase;
+    @include push(1);
+    @include column(19);
+    position: absolute;
+    top: 2px;
+    left:0;
+    #logo { 
+      height: 24px;
+      width: 98px;
+      @include box-shadow(#383838, 0px, 0px, 3px, 2px);
+    }
+  }
+  #search {
+    ul { @include horizontal-list; }
+    @include prepend(19); 
+    @include column(5, true); 
+  }
+}
+
+#main-menu-container {
+  @include prepend(1);
+  @include column(23,true);
+  background: -moz-linear-gradient(center top , #AAD4F4, #BCDDF4);
+  box-shadow: 1px 1px 2px #999999;
+  ul#main-menu {
+    li { 
+      @include column(2);
+      text-transform: uppercase; }
+    li a {
+      color: #31353D;
+      text-decoration: none;
+    }
+    li a:hover {
+      color: #fff;
+      background: #0085BC;
+    }
+    @include horizontal-list;
+  }  
+}
+
+#main-content {
+  padding-top: 18px;
+  @include push(1);
+  @include column(22,true);
+}
+
+#yield {
+  @include border-radius;
+  @include prepend(1);
+  @include column(18);
+  background: #fff;
+}
+
