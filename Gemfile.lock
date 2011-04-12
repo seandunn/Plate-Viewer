@@ -1,10 +1,13 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    compass (0.10.6)
+      haml (>= 3.0.4)
     cucumber-sinatra (0.3.0)
       templater (>= 1.0.0)
     diff-lcs (1.1.2)
     extlib (0.9.15)
+    haml (3.0.25)
     highline (1.6.1)
     rack (1.2.2)
     sass (3.1.0.alpha.252)
@@ -21,6 +24,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass
   cucumber-sinatra
   sass
   sinatra
