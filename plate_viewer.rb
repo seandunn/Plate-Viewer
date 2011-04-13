@@ -17,6 +17,18 @@ get "/stylesheets/:name.css" do
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
+def empty_well_hash
+  plate_cols = 12
+  well_hash  = {}
+  
+  ('A'..'H').each do |row_label|
+    well_hash[row_label]  = Array.new(plate_cols)
+  end
+  
+  well_hash
+end
+
 get '/' do
+  @well_hash = empty_well_hash
   erb :index
 end

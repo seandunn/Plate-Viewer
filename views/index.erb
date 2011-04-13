@@ -1,1 +1,30 @@
-Do be, do be, dobe do...
+<script type="text/javascript" charset="utf-8">
+  <%= erb :plate_json %>
+</script>
+
+<h1>Plate Viewer - Dummy Information</h1>
+
+<h3>Concentration</h3>
+<table class="plate" border="0" cellspacing="5" cellpadding="0">
+    <tr>
+      <th>&nbsp;</th>
+      <% (1..12).each do |column_number| %>
+        <th><%= column_number %></th>
+      <% end %>
+    </tr>
+
+
+    <% @well_hash.each do |row_label, row_wells| %>
+      <tr>
+        <th><%= row_label %></th>
+        <% row_wells.each_with_index do |well, index| %>
+          <td>
+            <div id="<%= "well_#{row_label}#{index + 1}" %>" class="red sample well">
+              &nbsp;
+            </div>     
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  
+</table>

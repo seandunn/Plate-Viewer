@@ -4,9 +4,6 @@
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
 
-@import "blueprint/ie";
-@include blueprint-ie;
-
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
 
@@ -21,14 +18,15 @@
 @import "compass/utilities/lists/horizontal-list";
 @import "compass/utilities/links/hover-link";
 @import "compass/css3/border-radius";
+@include blueprint-typography;
 
 body {
   background: #E3EEFC;
-  font-family: 'Lucida Grande',helvetica,arial,sans-serif;
+  
 }
 
 .container {
-  width: 100%;
+/*  width: 100%;*/
 }
 
 a {
@@ -36,21 +34,30 @@ a {
   @include link-colors(#fff, #ff0);
 }
 
+#header {
+/*  @include column(24);*/
+}
+
 #header-top {
   @include column(24,true);
   background: -moz-linear-gradient(center top , #31353D, #212429);
    border-top: 3px solid #055694;
    color: #EFEFEF;
-   font-size: 12px;
    
   #quick-links {
     @include horizontal-list;
     @include prepend(3);
-      @include column(16);
+    @include column(15);
+    a {
+      @include hover-link;
+      @include link-colors(#fff, #ff0);
+    }
   }
   
-  #user-links { 
-    @include column(5,true); 
+  #user-links {
+    @include column(5,true);
+    @include append(1);
+    text-align: right;
   }
   
 }
@@ -63,7 +70,7 @@ a {
   #logo-container {
     text-transform: uppercase;
     @include push(1);
-    @include column(19);
+    @include column(3);
     position: absolute;
     top: 2px;
     left:0;
@@ -74,43 +81,156 @@ a {
     }
   }
   #search {
-    ul { @include horizontal-list; }
-    @include prepend(19); 
-    @include column(5, true); 
+    @include prepend(18);
+    @include column(5, true);
+    ul { 
+      text-align: right;
+      @include horizontal-list;
+    }
   }
 }
 
 #main-menu-container {
-  @include prepend(1);
-  @include column(23,true);
+  font-weight:700;
+  @include column(24,true);
   background: -moz-linear-gradient(center top , #AAD4F4, #BCDDF4);
-  box-shadow: 1px 1px 2px #999999;
-  ul#main-menu {
-    li { 
-      @include column(2);
-      text-transform: uppercase; }
-    li a {
-      color: #31353D;
-      text-decoration: none;
-    }
-    li a:hover {
-      color: #fff;
-      background: #0085BC;
-    }
-    @include horizontal-list;
-  }  
+  @include box-shadow(#999, 1px, 1px, 1px);
+  #main-menu {
+    ul {
+      @include horizontal-list;
+
+      li { 
+        text-align: center;
+        text-transform: uppercase;
+      }
+      a {
+        padding:1px 15px 3px;
+        color: #31353D;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+        background: #0085BC;
+        @include border-bottom-left-radius(15px);
+        @include border-bottom-right-radius(15px);
+        @include box-shadow(#3F3F3F, 1px, 1px);
+      }
+    }  
+  }
 }
 
 #main-content {
   padding-top: 18px;
-  @include push(1);
-  @include column(22,true);
-}
-
-#yield {
-  @include border-radius;
   @include prepend(1);
-  @include column(18);
-  background: #fff;
+  @include column(23,true);
 }
 
+#yield-container {
+  @include border-radius;
+  @include column(19);
+  background: #fff;
+  border: 1px solid #ccc;
+}
+#yield {
+  @include push(1);
+  @include column(24);
+}
+
+#page-menu {
+  @include border-radius;
+  @include column(4,true);
+
+  ul.page-menu-entry {
+    @include border-radius;
+    @include no-bullets;
+    border: 1px solid #AAD4F4;
+    margin: 0;
+    padding: 0;
+    background: #D2E2F7;
+  }
+}
+
+
+#footer {
+  padding: 3px 0px 0px 10px;
+  line-height: 17px;
+  padding-bottom: 20px;
+  color: #666;
+}
+
+#footer a {
+  @include link-colors(#000,#880000);
+}
+
+
+.plate {
+  @include box-shadow(#666, 1px, 1px, 3px);
+  @include border-radius(15px);
+  @include border-top-left-radius(0);
+  border: 2px outset #0B234B;
+  vertical-align: middle;
+  text-align:     center;
+  width: 600px;
+  background:     #003D6B;
+  background: -moz-radial-gradient(center, circle closest-corner, #00233C, #002B4B);
+  padding:        5px;
+  color:          #fff;
+}
+
+.plate tr {
+  padding: 6px;
+}
+
+.plate th {
+  vertical-align: middle;
+  text-align:     center;
+  padding:0;
+}
+
+
+.plate td {
+  @include border-radius(10px);
+  height:56px;
+/*  width:63px;*/
+  vertical-align: middle;
+  text-align:     center;
+  padding:0;
+}
+
+.plate .sample, .well {
+  @include border-radius(10px);
+  height:56px;
+  width:63px;
+  vertical-align: middle;
+  text-align:     center;
+  border: 1px solid #051328;
+/*  border: 2px solid #051328;*/
+  color:#fff;
+  
+}
+
+
+.plate .green {
+  /*Moss green....*/
+  background: #006D07;
+  background: -moz-radial-gradient(center, circle closest-side, #006007, #008009);
+}
+  /*  */
+.plate .red {
+  background:#800000;
+  background: -moz-radial-gradient(center, circle closest-side, #800000, #A70000);
+}
+
+.plate .yellow {
+  background:#FFFE8D;
+  color: #282828;
+}
+
+.plate .orange {
+  background:#FF7300;
+  background: -moz-radial-gradient(center, circle closest-side, #D55700, #F36C00);
+}
+.plate .unknown-value {
+  background: #494949;
+  background: -moz-radial-gradient(center, circle farthest-side, #767676, #939393);
+}
