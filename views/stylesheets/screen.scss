@@ -19,6 +19,7 @@
 @import "compass/utilities/links/hover-link";
 @import "compass/css3/border-radius";
 @include blueprint-typography;
+@import "jquery-ui-1.8.11.custom.scss";
 
 body {
   background: #E3EEFC;
@@ -77,7 +78,7 @@ a {
     #logo { 
       height: 24px;
       width: 98px;
-      @include box-shadow(#383838, 0px, 0px, 3px, 2px);
+      @include box-shadow(rgba(100,100,100,0.1), 1px, 1px, 1px);
     }
   }
   #search {
@@ -94,7 +95,7 @@ a {
   font-weight:700;
   @include column(24,true);
   background: -moz-linear-gradient(center top , #AAD4F4, #BCDDF4);
-  @include box-shadow(#999, 1px, 1px, 1px);
+  @include box-shadow(#999, 1px, 1px, 2px);
   #main-menu {
     ul {
       @include horizontal-list;
@@ -121,15 +122,18 @@ a {
 
 #main-content {
   padding-top: 18px;
-  @include prepend(1);
-  @include column(23,true);
+/*  @include prepend(1);*/
+  @include column(24,true);
+/*  border: 1px solid black;*/
 }
 
 #yield-container {
+  @include push(1);
   @include border-radius;
-  @include column(19);
+  @include column(23,true);
   background: #fff;
-  border: 1px solid #ccc;
+/*  border: 1px solid #ccc;*/
+  @include box-shadow(#BFBFBF, 1px, 1px, 1px)
 }
 #yield {
   @include push(1);
@@ -170,7 +174,7 @@ a {
   border: 2px outset #0B234B;
   vertical-align: middle;
   text-align:     center;
-  width: 600px;
+  width: 850px;
   background:     #003D6B;
   background: -moz-radial-gradient(center, circle closest-corner, #00233C, #002B4B);
   padding:        5px;
@@ -204,7 +208,6 @@ a {
   vertical-align: middle;
   text-align:     center;
   border: 1px solid #051328;
-/*  border: 2px solid #051328;*/
   color:#fff;
   
 }

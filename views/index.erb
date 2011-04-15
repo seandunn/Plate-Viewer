@@ -2,9 +2,27 @@
   <%= erb :plate_json %>
 </script>
 
-<h1>Plate Viewer - Dummy Information</h1>
+<% content_for :page_menu do %>
+<% end %>
 
-<h3>Concentration</h3>
+<h1>Plate Viewer - Dummy Information</h1>
+<form action="">
+  <div id="radioset" class="ui-buttonset">
+    <input id="radio1" class="ui-helper-hidden-accessible" type="radio" checked="checked" name="radio"/>
+    <label class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" for="radio1" >
+      <span class="ui-button-text">Location</span>
+    </label>
+    <input id="radio2" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+    <label class="ui-button ui-widget ui-state-default ui-button-text-only" for="radio2">
+      <span class="ui-button-text">Concentration</span>
+    </label>
+    <input id="radio3" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+    <label class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" for="radio3">
+      <span class="ui-button-text">Gel QC</span>
+    </label>
+  </div>
+</form>
+<br/>
 <table class="plate" border="0" cellspacing="5" cellpadding="0">
     <tr>
       <th>&nbsp;</th>
@@ -28,3 +46,4 @@
     <% end %>
   
 </table>
+

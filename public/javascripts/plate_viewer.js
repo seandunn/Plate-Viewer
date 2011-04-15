@@ -1,6 +1,10 @@
 // *** PLATE VIEWER CODE ***
 $(function() {
   
+  // Button
+  $("#button").button();
+  $("#radioset").buttonset();
+  
   // ========
   // = Well =
   // ========
@@ -24,7 +28,6 @@ $(function() {
       _.bind(this, 'render');
       this.el = $('#well_' + this.model.get('map'));
       this.model.view = this;
-      
     },
     
     render: function() {
@@ -55,7 +58,7 @@ $(function() {
     el: $('table.plate'),
     
     events: {
-      "click #conc": "showConcentrations"
+      "click": "showConcentrations"
     },
     
     addModeButtons: function() {
@@ -79,22 +82,22 @@ $(function() {
     },
     
     render: function() {
-      $(this.el).html(this.template(this.model.get('concentration')));
+      $(this.el).html();
     },
     
     showConcentrations: function() {
-      // Do something...
-      // $('div.well').html('!?*#/!');
+              
+      this.model.wells.each(function(well) {
+        var view = new WellView({model: well});
+        view.render();
+      });
+      
+      this.$('.well').show('scale', {}, 500);
+              
     }
   });
   
   window.current_plate = new Plate(plate_json);
   window.plateview     = new PlateView({model: window.current_plate});
   
-  var all_maps = "";
-  window.current_plate.wells.each(function(map_value){
-    all_maps + map_value;
-  });
-  
-  // alert(all_maps.length);
 });
