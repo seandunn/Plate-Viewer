@@ -18,6 +18,7 @@
 @import "compass/utilities/lists/horizontal-list";
 @import "compass/utilities/links/hover-link";
 @import "compass/css3/border-radius";
+@import "compass/css3/gradient";
 @include blueprint-typography;
 @import "jquery-ui-1.8.11.custom.scss";
 
@@ -41,7 +42,7 @@ a {
 
 #header-top {
   @include column(24,true);
-  background: -moz-linear-gradient(center top , #31353D, #212429);
+  @include linear-gradient(color-stops(#31353D,#212429));
    border-top: 3px solid #055694;
    color: #EFEFEF;
    
@@ -65,7 +66,7 @@ a {
 
 #header-middle {
   @include column(24,true);
-  background: -moz-linear-gradient(center top , #004578, #0085BC);
+  @include linear-gradient(color-stops(#004578,#0085BC));
   color: #fff;
   height: 36px;
   #logo-container {
@@ -94,8 +95,8 @@ a {
 #main-menu-container {
   font-weight:700;
   @include column(24,true);
-  background: -moz-linear-gradient(center top , #AAD4F4, #BCDDF4);
-  @include box-shadow(#999, 1px, 1px, 2px);
+  @include linear-gradient(color-stops(#AAD4F4, #BCDDF4));
+  @include box-shadow(#999, 1px, 1px, 1px);
   #main-menu {
     ul {
       @include horizontal-list;
@@ -168,15 +169,17 @@ a {
 
 
 .plate {
-  @include box-shadow(#666, 1px, 1px, 3px);
+/*  @include box-shadow(#BFBFBF, 3px, 3px, 3px);*/
+  @include box-shadow(#BFBFBF, 3px, 3px, 3px);
   @include border-radius(15px);
   @include border-top-left-radius(0);
-  border: 2px outset #0B234B;
+  /* Use transparency for the background color or FF ridge will look bad... */
+  border: 3px ridge rgba(11,35,75,0.5);
   vertical-align: middle;
   text-align:     center;
   width: 850px;
   background:     #003D6B;
-  background: -moz-radial-gradient(center, circle closest-corner, #00233C, #002B4B);
+  @include radial-gradient(color-stops(#00233C, #002B4B), top left);
   padding:        5px;
   color:          #fff;
 }
@@ -189,13 +192,13 @@ a {
   vertical-align: middle;
   text-align:     center;
   padding:0;
+  width:63px;
 }
 
 
 .plate td {
   @include border-radius(10px);
   height:56px;
-/*  width:63px;*/
   vertical-align: middle;
   text-align:     center;
   padding:0;
@@ -205,9 +208,10 @@ a {
   @include border-radius(10px);
   height:56px;
   width:63px;
+  margin: 2px;
   vertical-align: middle;
   text-align:     center;
-  border: 1px solid #051328;
+  border: 3px ridge rgba(5,19,40,0.3);
   color:#fff;
   
 }
@@ -216,12 +220,12 @@ a {
 .plate .green {
   /*Moss green....*/
   background: #006D07;
-  background: -moz-radial-gradient(center, circle closest-side, #006007, #008009);
+  @include radial-gradient(color-stops(#006007, #008009));
 }
   /*  */
 .plate .red {
   background:#800000;
-  background: -moz-radial-gradient(center, circle closest-side, #800000, #A70000);
+  @include radial-gradient(color-stops(#800000, #C00000), top left);
 }
 
 .plate .yellow {
@@ -231,9 +235,10 @@ a {
 
 .plate .orange {
   background:#FF7300;
-  background: -moz-radial-gradient(center, circle closest-side, #D55700, #F36C00);
+  @include radial-gradient(color-stops(#D55700, #F36C00));
 }
+
 .plate .unknown-value {
   background: #494949;
-  background: -moz-radial-gradient(center, circle farthest-side, #767676, #939393);
+  @include radial-gradient(color-stops(#767676, #939393));
 }
