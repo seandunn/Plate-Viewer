@@ -31,7 +31,11 @@ $(function() {
     },
     
     render: function() {
-      $(this.el).html(this.model.get('concentration'));
+      this.el.html(this.model.get('map'));
+    },
+    
+    showConcentration: function() {
+      this.el.html(this.model.get('concentration'));
     }
     
   });
@@ -42,18 +46,20 @@ $(function() {
   window.Plate = Backbone.Model.extend({
     name: "plate",
     
+    initialize: function(args) {
+      this.maybeUnwrap(args);
+      this.loadWells();
+    },
+
     loadWells: function() {
       var wells = new window.WellList;
       wells.refresh(this.get('wells'));
       this.wells = wells;
-    },
-
-    initialize: function(args) {
-      this.maybeUnwrap(args);
-      this.loadWells();
     }
+
   });
   
+
   window.PlateView = Backbone.View.extend({
     el: $('table.plate'),
     
@@ -69,35 +75,38 @@ $(function() {
     
     initialize: function() {
       _.bind(this, "render");
-      this.refreshWells();
+      this.initializeWells();
+      this.showLocations();
     },
     
-    refreshWell: function(well) {
-      var view = new WellView({model: well});
-      this.$(view.el).html(well.get('map'));
+    initializeWells: function() {
+      this.model.wells.each(this.makeWellView);
     },
     
-    refreshWells: function() {
-      this.model.wells.each(this.refreshWell);
+    makeWellView: function(well) {
+      well.view = new WellView({model: well});
     },
     
-    render: function() {
-      $(this.el).html();
+    render: function(showFunction) {
+      this.model.wells.each(showFunction);
+    },
+    
+    showLocations: function() {
+      this.render(
+        function(well) { well.view.render(); }
+      );
     },
     
     showConcentrations: function() {
-              
-      this.model.wells.each(function(well) {
-        var view = new WellView({model: well});
-        view.render();
-      });
-      
-      this.$('.well').show('scale', {}, 500);
-              
+      this.render(
+        function(well) { well.view.showConcentration(); }
+      );
     }
   });
   
+
   window.current_plate = new Plate(plate_json);
   window.plateview     = new PlateView({model: window.current_plate});
+
   
 });
