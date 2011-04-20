@@ -4,9 +4,9 @@
 
 <h1>Plate Viewer - Dummy Information</h1>
 <br/>
-<table class="plate" border="0" cellspacing="5" cellpadding="0">
+<table class="plate">
     <tr>
-      <th>&nbsp;</th>
+      <th class="first-col">&nbsp;</th>
       <% (1..12).each do |column_number| %>
         <th><%= column_number %></th>
       <% end %>
@@ -15,12 +15,14 @@
 
     <% @well_hash.each do |row_label, row_wells| %>
       <tr>
-        <th><%= row_label %></th>
+        <th class="first-col"><%= row_label %></th>
         <% row_wells.each_with_index do |well, index| %>
           <td>
-            <div id="<%= "well_#{row_label}#{index + 1}" %>" class="well sample">
-              &nbsp;
-            </div>     
+            <div class="holder">
+              <div id="<%= "well_#{row_label}#{index + 1}" %>" rel="#<%= "details_#{row_label}#{index + 1}" %>"  class="well">
+                &nbsp;
+              </div>
+            </div>
           </td>
         <% end %>
       </tr>
@@ -29,19 +31,31 @@
 <br/>
 
 <form action="">
-  <div id="radioset" class="ui-buttonset">
-    <input id="radio1" class="ui-helper-hidden-accessible" type="radio" checked="checked" name="radio"/>
-    <label class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" for="radio1" >
+  <div id="plate-control" class="ui-buttonset">
+    <input id="showLocation" class="ui-helper-hidden-accessible" type="radio" checked="checked" name="radio"/>
+    <label class="ui-state-active ui-button ui-widget ui-button-text-only ui-corner-left" for="showLocation" >
       <span class="ui-button-text">Location</span>
     </label>
-    <input id="radio2" class="ui-helper-hidden-accessible" type="radio" name="radio" />
-    <label class="ui-button ui-widget ui-state-default ui-button-text-only" for="radio2">
+    <input id="showConcentration" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+    <label class="ui-button ui-widget ui-state-default ui-button-text-only" for="showConcentration">
       <span class="ui-button-text">Concentration</span>
     </label>
-    <input id="radio3" class="ui-helper-hidden-accessible" type="radio" name="radio" />
-    <label class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" for="radio3">
+    <input id="showGelQc" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+    <label class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" for="showGelQc">
       <span class="ui-button-text">Gel QC</span>
     </label>
   </div>
 </form>
 <br/>
+
+<script type="text/template" id="details-template">
+  <div class="details-template" id="details_<%%= map %>">
+  	<img src="/images/well_side_on.png" \/>
+  	<div class="details">
+  		<h3>Well Details<\/h3>
+  		<h4>Sample Name:<%%= sample_name %><\/h4>
+
+  		<p>The content ...<\/p>
+  	<\/div>
+  <\ /div>  
+</script>

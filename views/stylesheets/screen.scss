@@ -169,16 +169,17 @@ a {
 
 
 .plate {
-  @include box-shadow(#BFBFBF, 10px, 10px, 10px);
+  @include box-shadow(#A6A6A6, 5px, 5px, 5px);
   @include border-radius(15px);
   @include border-top-left-radius(0);
   /* Use transparency for the background color or FF ridge will look bad... */
   border: 3px ridge rgba(11,35,75,0.2);
   vertical-align: middle;
   text-align:     center;
-  width: 850px;
-  height: 550px;
-  background:     #001F35;
+  width: 900px;
+  height: 600px;
+/*  background:     #001F35;*/
+  background:     #00497C;
 /*  @include radial-gradient(color-stops(#00233C, #002B4B), top left);*/
   padding:        5px;
   color:          #fff;
@@ -189,44 +190,65 @@ a {
 }
 
 .plate th {
+  padding: 0;
+}
+
+.plate th {
   vertical-align: middle;
   text-align:     center;
   padding:0;
-/*  width:63px;*/
+  width:65px;
+  height: 15px;
+}
+
+.plate th.first-col {
+  width: 15px;
+/*  height: 65px;*/
 }
 
 
-.plate td {
+.plate .holder {
 /*  @include border-radius(10px);*/
-  height:65px;
-  width:65px;
+  height:54px;
+  width:54px;
+  padding: 6px;
   vertical-align: middle;
   text-align:     center;
-  padding:0;
+  border: 3px ridge rgba(5,19,40,0.15);
+/*  background: #003E69;*/
+  @include radial-gradient(color-stops(#002F51,#003F6B), top left);
+  @include border-radius(15px);
 }
 
 .plate .well {
-  @include border-radius(10px);
-  height:64px;
-  width:64px;
-  margin: 2px;
+/*  border: 3px ridge rgba(5,19,40,0.25);*/
+  @include border-radius(25px);
+  height:36px;
+  width:100%;
+  padding: 17px 0 0 0;
   vertical-align: middle;
   text-align:     center;
-  border: 3px ridge rgba(5,19,40,0.2);
-  background: #001728;
   color:#fff;
-  
+/*  outline:none; */
+/*  transition: all 0.25s ease-in-out; */
+/*  -webkit-transition: all 0.25s ease-in-out; */
+/*  -moz-transition: all 0.25s ease-in-out;   */
+}
+
+.plate .well:hover { 
+  @include box-shadow(#CACDFF, 0, 0, 5px);
 }
 
 .plate .green {
   /*Moss green....*/
-  background: #006D07;
-  @include radial-gradient(color-stops(#006007, #008009));
+  background: #196D18;
+  @include radial-gradient(color-stops(#00B10E, #002802), top left);
 }
 
 .plate .red {
-/*  background:#A00000;*/
-/*  @include radial-gradient(color-stops(#A00000, #D00000), top left);*/
+  background:#D10000;
+/*  background:rgba(209,0,0,0.75);*/
+  @include radial-gradient(color-stops(#D30000,#480000), top left);
 }
 
 .plate .yellow {
@@ -236,10 +258,82 @@ a {
 
 .plate .orange {
   background:#FF7300;
-  @include radial-gradient(color-stops(#D55700, #F36C00));
+  @include radial-gradient(color-stops(#FF8B32,#3D1400), top left);
 }
 
 .plate .unknown-value {
   background: #494949;
-  @include radial-gradient(color-stops(#767676, #939393));
+  @include radial-gradient(color-stops(#005691, #001C2F), top left);
 }
+
+.tooltip {
+	display:none;
+	background:transparent url(/images/black_arrow.png);
+	font-size:12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}
+
+.tooltip.bottom {
+	background:url(/images/black_arrow_bottom.png);
+	padding-top:40px;
+	height:55px;
+}
+
+.tooltip.bottom {
+	background:url(/images/black_arrow_bottom.png);
+}
+
+/* the overlayed element */
+.simple_overlay {
+	
+	/* must be initially hidden */
+	display:none;
+	
+	/* place overlay on top of other elements */
+	z-index:10000;
+	
+	/* styling */
+	background-color:#333;
+	
+	width:675px;	
+	min-height:200px;
+	border:1px solid #666;
+	
+	/* CSS3 styling for latest browsers */
+	-moz-box-shadow:0 0 90px 5px #000;
+	-webkit-box-shadow: 0 0 90px #000;	
+}
+
+/* close button positioned on upper right corner */
+.simple_overlay .close {
+  /*Replace image with jquery-ui image*/
+	background-image:url(/images/close.png);
+	position:absolute;
+	right:-15px;
+	top:-15px;
+	cursor:pointer;
+	height:35px;
+	width:35px;
+}
+
+
+
+/* styling for elements inside overlay */
+.details {
+	position:absolute;
+	top:15px;
+	right:15px;
+	font-size:11px;
+	color:#fff;
+	width:150px;
+}
+
+.details h3 {
+	color:#aba;
+	font-size:15px;
+	margin:0 0 -10px 0;
+}
+
