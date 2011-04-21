@@ -4,7 +4,7 @@
 
 <h1>Plate Viewer - Dummy Information</h1>
 <br/>
-<table class="plate">
+<table id="plate" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th class="first-col">&nbsp;</th>
       <% (1..12).each do |column_number| %>
@@ -18,10 +18,8 @@
         <th class="first-col"><%= row_label %></th>
         <% row_wells.each_with_index do |well, index| %>
           <td>
-            <div class="holder">
-              <div id="<%= "well_#{row_label}#{index + 1}" %>" rel="#<%= "details_#{row_label}#{index + 1}" %>"  class="well">
-                &nbsp;
-              </div>
+            <div id="<%= "well_#{row_label}#{index + 1}" %>" class="well">
+              &nbsp;
             </div>
           </td>
         <% end %>
@@ -49,13 +47,25 @@
 <br/>
 
 <script type="text/template" id="details-template">
-  <div class="details-template" id="details_<%%= map %>">
-  	<img src="/images/well_side_on.png" \/>
-  	<div class="details">
-  		<h3>Well Details<\/h3>
-  		<h4>Sample Name:<%%= sample_name %><\/h4>
-
-  		<p>The content ...<\/p>
-  	<\/div>
-  <\ /div>  
+  <div class="aliquot-details" id="details_<%%= map %>">
+    <div class="image">
+      <h3>Well <%%= map %> Details</h3>
+      <img src="/images/well_side_on.png" />
+    </div>
+    <div class="details">
+      <h3>Sample: <%%= sample_name %></h3>
+      <table>
+      <tr><th>Gel Pass:            </th><td><%%= gel_pass          %></td></tr>
+      <tr><th>Current Volume:      </th><td><%%= current_volume    %></td></tr>
+      <tr><th>Concentration:       </th><td><%%= concentration     %></td></tr>
+      <tr><th>Picked Volume:       </th><td><%%= picked_volume     %></td></tr>
+      <tr><th>Buffer Volume:       </th><td><%%= buffer_volume     %></td></tr>
+      <tr><th>Requested Volume:    </th><td><%%= requested_volume  %></td></tr>
+      <tr><th>Pico Pass:           </th><td><%%= pico_pass         %></td></tr>
+      <tr><th>Created At:          </th><td><%%= created_at        %></td></tr>
+      <tr><th>Updated At:          </th><td><%%= updated_at        %></td></tr>
+      <tr><th>UUID:                </th><td><%%= uuid              %></td></tr>
+      </table>
+    </div>
+  </div>  
 </script>

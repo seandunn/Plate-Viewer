@@ -1,5 +1,5 @@
 // This import applies a global reset to any page that imports this stylesheet.
-@import "blueprint/reset";
+/*@import "blueprint/reset";*/
 
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
@@ -8,8 +8,8 @@
 @import "blueprint";
 
 // Combine the partials into a single screen stylesheet.
-@import "partials/page";
-@import "partials/form";
+/*@import "partials/page";*/
+/*@import "partials/form";*/
 /*@import "partials/two_col";*/
 @import "blueprint/liquid";
 
@@ -19,7 +19,8 @@
 @import "compass/utilities/links/hover-link";
 @import "compass/css3/border-radius";
 @import "compass/css3/gradient";
-@include blueprint-typography;
+
+@import "screen-optimised.scss";
 @import "jquery-ui-1.8.11.custom.scss";
 
 body {
@@ -27,7 +28,7 @@ body {
   
 }
 
-.container {
+#container {
 /*  width: 100%;*/
 }
 
@@ -168,8 +169,8 @@ a {
 }
 
 
-.plate {
-  @include box-shadow(#A6A6A6, 5px, 5px, 5px);
+#plate {
+  @include box-shadow(#000, 2px, 2px, 5px);
   @include border-radius(15px);
   @include border-top-left-radius(0);
   /* Use transparency for the background color or FF ridge will look bad... */
@@ -179,21 +180,21 @@ a {
   width: 900px;
   height: 600px;
 /*  background:     #001F35;*/
-  background:     #00497C;
+  background:     #00416F;
 /*  @include radial-gradient(color-stops(#00233C, #002B4B), top left);*/
   padding:        5px;
   color:          #fff;
 }
 
-.plate tr {
+#plate tr {
 /*  padding: 6px;*/
 }
 
-.plate th {
+#plate th {
   padding: 0;
 }
 
-.plate th {
+#plate th {
   vertical-align: middle;
   text-align:     center;
   padding:0;
@@ -201,139 +202,154 @@ a {
   height: 15px;
 }
 
-.plate th.first-col {
+#plate th.first-col {
   width: 15px;
 /*  height: 65px;*/
 }
 
+#plate td {
+  padding:0;
+  margin:0;
+}
 
-.plate .holder {
-/*  @include border-radius(10px);*/
-  height:54px;
-  width:54px;
+
+#plate .well {
+  height:60px;
+/*  width:54px;*/
   padding: 6px;
-  vertical-align: middle;
+  margin: 3px;
+/*  vertical-align: middle;*/
   text-align:     center;
-  border: 3px ridge rgba(5,19,40,0.15);
+  border: 3px ridge rgba(5,19,40,0.1);
 /*  background: #003E69;*/
-  @include radial-gradient(color-stops(#002F51,#003F6B), top left);
+  @include radial-gradient(color-stops(#002F51,#003A62), top left);
   @include border-radius(15px);
 }
 
-.plate .well {
-/*  border: 3px ridge rgba(5,19,40,0.25);*/
-  @include border-radius(25px);
-  height:36px;
-  width:100%;
-  padding: 17px 0 0 0;
+.aliquot {
+  @include border-radius(30px);
+/*  @include border-bottom-left-radius(38px);*/
+/*  @include border-top-right-radius(30px);*/
+/*  @include border-bottom-right-radius(32px);*/
+/*  @include border-top-left-radius(28px);*/
+/*  @include border-radius(20px 36px 20px 45px,30px 15px 38px 25px);*/
+  height:40px;
+  width:60px;
+  padding: 20px 0 0 0;
   vertical-align: middle;
   text-align:     center;
   color:#fff;
-/*  outline:none; */
-/*  transition: all 0.25s ease-in-out; */
-/*  -webkit-transition: all 0.25s ease-in-out; */
-/*  -moz-transition: all 0.25s ease-in-out;   */
+  @include box-shadow(#00192B, 3px, 3px, 7px);
 }
 
-.plate .well:hover { 
-  @include box-shadow(#CACDFF, 0, 0, 5px);
+.aliquot:hover {
+  color: #FFD600;
 }
 
-.plate .green {
+#plate .green {
   /*Moss green....*/
   background: #196D18;
   @include radial-gradient(color-stops(#00B10E, #002802), top left);
 }
 
-.plate .red {
+#plate .red {
   background:#D10000;
 /*  background:rgba(209,0,0,0.75);*/
   @include radial-gradient(color-stops(#D30000,#480000), top left);
 }
 
-.plate .yellow {
+#plate .yellow {
   background:#FFFE8D;
   color: #282828;
 }
 
-.plate .orange {
+#plate .orange {
   background:#FF7300;
-  @include radial-gradient(color-stops(#FF8B32,#3D1400), top left);
+  @include radial-gradient(color-stops(#FF9443,#5B1B00), top left);
 }
 
-.plate .unknown-value {
+#plate .unknown-value {
   background: #494949;
-  @include radial-gradient(color-stops(#005691, #001C2F), top left);
+  @include radial-gradient(color-stops(#289AC7, #083442), top left);
 }
 
 .tooltip {
-	display:none;
-	background:transparent url(/images/black_arrow.png);
-	font-size:12px;
-	height:70px;
-	width:160px;
-	padding:25px;
-	color:#fff;	
+  display:none;
+  background:transparent url(/images/black_arrow.png);
+  font-size:12px;
+  height:70px;
+  width:160px;
+  padding:25px;
+  color:#fff; 
 }
 
 .tooltip.bottom {
-	background:url(/images/black_arrow_bottom.png);
-	padding-top:40px;
-	height:55px;
+  background:url(/images/black_arrow_bottom.png);
+  padding-top:40px;
+  height:65px;
 }
 
 .tooltip.bottom {
-	background:url(/images/black_arrow_bottom.png);
+  background:url(/images/black_arrow_bottom.png);
 }
 
 /* the overlayed element */
-.simple_overlay {
-	
-	/* must be initially hidden */
-	display:none;
-	
-	/* place overlay on top of other elements */
-	z-index:10000;
-	
-	/* styling */
-	background-color:#333;
-	
-	width:675px;	
-	min-height:200px;
-	border:1px solid #666;
-	
-	/* CSS3 styling for latest browsers */
-	-moz-box-shadow:0 0 90px 5px #000;
-	-webkit-box-shadow: 0 0 90px #000;	
+.aliquot-details {
+  
+  /* must be initially hidden */
+  display:none;
+  
+  /* place overlay on top of other elements */
+  z-index:10000;
+  
+  /* styling */
+  background-color:#3F3F3F;
+  @include linear-gradient(color-stops(#31353D,#212429));
+  
+  width:600px;  
+  min-height:400px;
+  border:1px solid #666;
+  
+  /* CSS3 styling for latest browsers */
+  -moz-box-shadow:0 0 90px 5px #000;
+  -webkit-box-shadow: 0 0 90px #000;  
 }
 
 /* close button positioned on upper right corner */
-.simple_overlay .close {
+.aliquot-details .close {
   /*Replace image with jquery-ui image*/
-	background-image:url(/images/close.png);
-	position:absolute;
-	right:-15px;
-	top:-15px;
-	cursor:pointer;
-	height:35px;
-	width:35px;
+  background-image:url(/images/close.png);
+  position:absolute;
+  right:-15px;
+  top:-15px;
+  cursor:pointer;
+  height:35px;
+  width:35px;
 }
 
+div.aliquot-details h3 {
+  color:#55D8FF;
+  font-size:15px;
+}
+
+.aliquot-details img {
+  position:absolute;
+  left:15px;
+  top:65px;
+}
 
 
 /* styling for elements inside overlay */
 .details {
-	position:absolute;
-	top:15px;
-	right:15px;
-	font-size:11px;
-	color:#fff;
-	width:150px;
+  position:absolute;
+  top:15px;
+  right:15px;
+  font-size:11px;
+  color:#fff;
+  width:400px;
 }
 
-.details h3 {
-	color:#aba;
-	font-size:15px;
-	margin:0 0 -10px 0;
+.image h3 {
+  margin:15px 10px 10px 15px;
 }
 

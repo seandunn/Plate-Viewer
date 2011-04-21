@@ -1,0 +1,62 @@
+/* line 4, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 6, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+html {
+  font-size: 100.01%;
+}
+
+/*$blueprint-liquid-width: 100%;*/
+/* line 9, views/stylesheets/partials/_page.scss */
+body.bp {
+  line-height: 1.5;
+  font-family: "Lucida Grande", helvetica, arial, sans-serif;
+  color: #333333;
+  font-size: 87.5%;
+  /*  @include blueprint-debug;*/
+  /*  @include blueprint-interaction;*/
+}
+
+/* line 67, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.50em;
+}
+/* line 68, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+/* line 69, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1.00em;
+}
+/* line 70, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+/* line 71, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.50em;
+}
+/* line 72, /Users/sd9/.rvm/gems/ruby-1.9.2-p180@plate_viewer/gems/compass-0.10.6/frameworks/blueprint/stylesheets/./blueprint/./_typography.scss */
+body.bp h6 {
+  font-size: 1em;
+  font-weight: bold;
+}

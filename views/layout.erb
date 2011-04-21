@@ -3,16 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
 <!--[if lt IE 8]>
     <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <![endif]-->
 
   <%# Keep stylesheet links above script links so that things load in the correct order... %>
-  <!-- // <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.5.2.min.js"></script> -->
-  <!-- // <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.4.4.min.js"></script> -->
-  <!-- // <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.tools.min.js"></script> -->
-  <script src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+  <!-- <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.5.2.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.tools.min.js"></script> -->
+  <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js?foo"></script>
 
   
   <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-ui-1.8.11.custom.min.js"></script>
@@ -22,8 +21,8 @@
   <script type="text/javascript" charset="utf-8" src="/javascripts/plate_viewer.js"></script>
   <title>Plate Viewer</title>
 </head>
-<body>
-  <div class="container">
+<body class='bp'>
+  <div id="container">
     <div id="header">
       <div id="header-top">
         <div id="quick-links">

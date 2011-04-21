@@ -30,7 +30,7 @@ $(window).load(function() {
       this.createAliqlot();
       this.model.view = this;
       this.setUpDetails();
-      this.setUpToolTip();
+      // this.setUpToolTip();
     },
     
     createAliqlot: function() {
@@ -39,7 +39,7 @@ $(window).load(function() {
       
       $(newAliquot).attr('id','aliquot_' + this.model.get('map'));
       $(newAliquot).addClass('aliquot');
-      $(newAliquot).attr('rel','#details_'  + this.model.get('map'));
+      $(newAliquot).attr('rel','details_#'  + this.model.get('map'));
       this.el = $(newAliquot);
     },
     
@@ -62,28 +62,18 @@ $(window).load(function() {
         '<br/>Map: ' + this.model.get('map'));
     },
     
-    
     setUpDetails: function() {
       $('#main-content').append(
         this.detailsTemplate({
-                      map: this.model.get('map'),
-              sample_name: this.model.get('sample_name'),
-           current_volume: this.model.get('current_volumen'),
-            concentration: this.model.get('concentration'),
-            picked_volume: this.model.get('picked_volume'),
-            buffer_volume: this.model.get('buffer_volume'),
-         requested_volume: this.model.get('requested_volume'),
-                pico_pass: this.model.get('pico_pass'),
-                 gel_pass: this.model.get('gel_pass'),
-               created_at: this.model.get('created_at'),
-               updated_at: this.model.get('updated_at'),
-                     uuid: this.model.get('uuid')
+                  map: this.model.get('map'),
+          sample_name: this.model.get('sample_name')
         })
       );
     },
     
     setValue: function(value) {
       this.el.html((value ? value : "?"));
+      // this.el.show('scale', 850);
     },
     
     showConcentration: function() {
@@ -184,15 +174,15 @@ $(window).load(function() {
 
   window.current_plate    = new Plate(plate_json);
   window.plateControlView = new PlateControlView({model: window.current_plate});
-  $('.aliquot').tooltip({
-    
-     // use the built-in fadeIn/fadeOut effect
-      effect: "slide",
-      opacity: 1,
-      delay: 0,
-      predelay: 500
-    
-    }).dynamic({ bottom: { direction: 'down', bounce: true } });
+  // $('.aliquot').tooltip({
+  //   
+  //    // use the built-in fadeIn/fadeOut effect
+  //     effect: "fade",
+  //     opacity: 1,
+  //     delay: 0,
+  //     predelay: 800
+  //   
+  //   });
   
   $(".aliquot[rel]").overlay();
 
