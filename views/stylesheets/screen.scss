@@ -2,7 +2,7 @@
 /*@import "blueprint/reset";*/
 
 // To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
+/*@import "partials/base";*/
 
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
@@ -58,8 +58,8 @@ a {
   }
   
   #user-links {
-    @include column(5,true);
-    @include append(1);
+    @include column(6,true);
+/*    @include append(1);*/
     text-align: right;
   }
   
@@ -77,6 +77,7 @@ a {
     position: absolute;
     top: 2px;
     left:0;
+    vertical-align: top;
     #logo { 
       height: 24px;
       width: 98px;
@@ -84,8 +85,9 @@ a {
     }
   }
   #search {
-    @include prepend(18);
+    @include prepend(17);
     @include column(5, true);
+    float: right;
     ul { 
       text-align: right;
       @include horizontal-list;
@@ -182,7 +184,7 @@ a {
 /*  background:     #001F35;*/
   background:     #00416F;
 /*  @include radial-gradient(color-stops(#00233C, #002B4B), top left);*/
-  padding:        5px;
+  padding:        3px;
   color:          #fff;
 }
 
@@ -217,7 +219,7 @@ a {
   height:60px;
 /*  width:54px;*/
   padding: 6px;
-  margin: 3px;
+  margin: 1px;
 /*  vertical-align: middle;*/
   text-align:     center;
   border: 3px ridge rgba(5,19,40,0.1);
@@ -228,11 +230,6 @@ a {
 
 .aliquot {
   @include border-radius(30px);
-/*  @include border-bottom-left-radius(38px);*/
-/*  @include border-top-right-radius(30px);*/
-/*  @include border-bottom-right-radius(32px);*/
-/*  @include border-top-left-radius(28px);*/
-/*  @include border-radius(20px 36px 20px 45px,30px 15px 38px 25px);*/
   height:40px;
   width:60px;
   padding: 20px 0 0 0;
@@ -269,7 +266,7 @@ a {
 }
 
 #plate .unknown-value {
-  background: #494949;
+  background: #1D86AD;
   @include radial-gradient(color-stops(#289AC7, #083442), top left);
 }
 
@@ -304,15 +301,15 @@ a {
   
   /* styling */
   background-color:#3F3F3F;
-  @include linear-gradient(color-stops(#31353D,#212429));
+  @include linear-gradient(color-stops(#353535,#0F0F0F));
   
   width:600px;  
   min-height:400px;
-  border:1px solid #666;
-  
+  border:3px solid #fff;
+  @include border-radius(5px);
   /* CSS3 styling for latest browsers */
-  -moz-box-shadow:0 0 90px 5px #000;
-  -webkit-box-shadow: 0 0 90px #000;  
+/*  -moz-box-shadow:1px 1px 90px 5px #000;*/
+/*  -webkit-box-shadow: 0 0 90px #000;  */
 }
 
 /* close button positioned on upper right corner */
@@ -347,9 +344,10 @@ div.aliquot-details h3 {
   font-size:11px;
   color:#fff;
   width:400px;
+  text-align: left;
 }
 
 .image h3 {
-  margin:15px 10px 10px 15px;
+  margin:30px 10px 10px 35px;
 }
 

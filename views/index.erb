@@ -4,6 +4,8 @@
 
 <h1>Plate Viewer - Dummy Information</h1>
 <br/>
+<div id="plate-control" class="ui-buttonset"><h3>Plate Viewer requires JavaScript...</h3></div>
+<br/>
 <table id="plate" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th class="first-col">&nbsp;</th>
@@ -27,24 +29,22 @@
     <% end %>
 </table>
 <br/>
-
-<form action="">
-  <div id="plate-control" class="ui-buttonset">
-    <input id="showLocation" class="ui-helper-hidden-accessible" type="radio" checked="checked" name="radio"/>
-    <label class="ui-state-active ui-button ui-widget ui-button-text-only ui-corner-left" for="showLocation" >
-      <span class="ui-button-text">Location</span>
-    </label>
-    <input id="showConcentration" class="ui-helper-hidden-accessible" type="radio" name="radio" />
-    <label class="ui-button ui-widget ui-state-default ui-button-text-only" for="showConcentration">
-      <span class="ui-button-text">Concentration</span>
-    </label>
-    <input id="showGelQc" class="ui-helper-hidden-accessible" type="radio" name="radio" />
-    <label class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" for="showGelQc">
-      <span class="ui-button-text">Gel QC</span>
-    </label>
-  </div>
-</form>
-<br/>
+<script type="text/template" id="plate-control-template">
+  <form action="">
+      <input id="showLocation" class="ui-helper-hidden-accessible" type="radio" checked="checked" name="radio"/>
+      <label class="ui-state-active ui-button ui-widget ui-button-text-only ui-corner-left" for="showLocation" >
+        <span class="ui-button-text">Location</span>
+      </label>
+      <input id="showConcentration" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+      <label class="ui-button ui-widget ui-state-default ui-button-text-only" for="showConcentration">
+        <span class="ui-button-text">Concentration</span>
+      </label>
+      <input id="showGelQc" class="ui-helper-hidden-accessible" type="radio" name="radio" />
+      <label class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" for="showGelQc">
+        <span class="ui-button-text">Gel QC</span>
+      </label>
+  </form>
+</script>
 
 <script type="text/template" id="details-template">
   <div class="aliquot-details" id="details_<%%= map %>">

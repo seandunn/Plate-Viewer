@@ -2,7 +2,7 @@
 $(window).load(function() {
   
   // Control Buttons
-  $(".ui-buttonset").buttonset();
+  // $(".ui-buttonset").buttonset();
   
   // ========
   // = Aliquot =
@@ -60,6 +60,12 @@ $(window).load(function() {
       this.el.attr('title',
         'Sample: ' + this.model.get('sample_name') +
         '<br/>Map: ' + this.model.get('map'));
+        
+        this.el.tooltip({
+            effect: "slide",
+            delay: 0,
+            predelay: 500
+          }).dynamic({ bottom: { direction: 'down', bounce: true } });
     },
     
     
@@ -80,6 +86,8 @@ $(window).load(function() {
                      uuid: this.model.get('uuid')
         })
       );
+      
+      this.el.overlay();
     },
     
     setValue: function(value) {
@@ -138,16 +146,27 @@ $(window).load(function() {
   window.PlateControlView = Backbone.View.extend({
     el: $('#plate-control'),
     
+    controlTemplate: _.template($('#plate-control-template').html()),
+    
     events: {
-      "click #showLocation": "showLocations",
+      "click #showLocation":      "showLocations",
       "click #showConcentration": "showConcentrations",
-      "click #showGelQc": "showGelQc"
+      "click #showGelQc":         "showGelQc"
+    },
+    
+    viewControls: {
+      location:      'Location',
+      concentration: 'Concentration',
+      gel_qc:        'Gel QC'
     },
     
     initialize: function() {
+      this.el.html(this.controlTemplate(this.viewControls));
+      this.el.buttonset();
       _.bind(this, "render");
       this.initializeAliquotViews();
       this.showLocations();
+      
     },
     
     initializeAliquotViews: function() {
@@ -182,19 +201,10 @@ $(window).load(function() {
   });
   
 
+  // =================
+  // = Instances.... =
+  // =================
   window.current_plate    = new Plate(plate_json);
   window.plateControlView = new PlateControlView({model: window.current_plate});
-  $('.aliquot').tooltip({
-    
-     // use the built-in fadeIn/fadeOut effect
-      effect: "slide",
-      opacity: 1,
-      delay: 0,
-      predelay: 500
-    
-    }).dynamic({ bottom: { direction: 'down', bounce: true } });
-  
-  $(".aliquot[rel]").overlay();
-
   
 });
