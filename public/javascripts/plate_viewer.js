@@ -71,20 +71,7 @@ $(window).load(function() {
     
     setUpDetails: function() {
       $('#main-content').append(
-        this.detailsTemplate({
-                      map: this.model.get('map'),
-              sample_name: this.model.get('sample_name'),
-           current_volume: this.model.get('current_volumen'),
-            concentration: this.model.get('concentration'),
-            picked_volume: this.model.get('picked_volume'),
-            buffer_volume: this.model.get('buffer_volume'),
-         requested_volume: this.model.get('requested_volume'),
-                pico_pass: this.model.get('pico_pass'),
-                 gel_pass: this.model.get('gel_pass'),
-               created_at: this.model.get('created_at'),
-               updated_at: this.model.get('updated_at'),
-                     uuid: this.model.get('uuid')
-        })
+        this.detailsTemplate({ model: this.model })
       );
       
       this.el.overlay();

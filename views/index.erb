@@ -47,24 +47,24 @@
 </script>
 
 <script type="text/template" id="details-template">
-  <div class="aliquot-details" id="details_<%%= map %>">
+  <div class="aliquot-details" id="details_<%%= model.get('map') %>">
     <div class="image">
-      <h3>Well <%%= map %> Details</h3>
+      <h3>Well <%%= model.get('map') %> Details</h3>
       <img src="/images/well_side_on.png" />
     </div>
     <div class="details">
-      <h3>Sample: <%%= sample_name %></h3>
+      <h3>Sample: <%%= model.get('sample_name') %></h3>
       <table>
-      <tr><th>Gel Pass:            </th><td><%%= gel_pass          %></td></tr>
-      <tr><th>Current Volume:      </th><td><%%= current_volume    %></td></tr>
-      <tr><th>Concentration:       </th><td><%%= concentration     %></td></tr>
-      <tr><th>Picked Volume:       </th><td><%%= picked_volume     %></td></tr>
-      <tr><th>Buffer Volume:       </th><td><%%= buffer_volume     %></td></tr>
-      <tr><th>Requested Volume:    </th><td><%%= requested_volume  %></td></tr>
-      <tr><th>Pico Pass:           </th><td><%%= pico_pass         %></td></tr>
-      <tr><th>Created At:          </th><td><%%= created_at        %></td></tr>
-      <tr><th>Updated At:          </th><td><%%= updated_at        %></td></tr>
-      <tr><th>UUID:                </th><td><%%= uuid              %></td></tr>
+      <tr><th>Gel Pass:            </th><td><%%= model.get('gel_pass') %></td></tr>
+      <tr><th>Current Volume:      </th><td><%%= model.get('current_volume') %></td></tr>
+      <tr><th>Concentration:       </th><td><%%= model.get('concentration') %></td></tr>
+      <tr><th>Picked Volume:       </th><td><%%= model.get('picked_volume') %></td></tr>
+      <tr><th>Buffer Volume:       </th><td><%%= model.get('buffer_volume') %></td></tr>
+      <tr><th>Requested Volume:    </th><td><%%= model.get('requested_volume') %></td></tr>
+      <tr><th>Pico Pass:           </th><td><%%= model.get('pico_pass') %></td></tr>
+      <tr><th>Created At:          </th><td><%%= model.get('created_at') %></td></tr>
+      <tr><th>Updated At:          </th><td><%%= model.get('updated_at') %></td></tr>
+      <tr><th>UUID:                </th><td><%%= model.get('uuid') %></td></tr>
       </table>
     </div>
   </div>  
