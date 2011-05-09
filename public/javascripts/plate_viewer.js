@@ -59,7 +59,7 @@ $(window).load(function() {
     setUpToolTip: function() {
       this.el.attr('title',
         'Sample: ' + this.model.get('sample_name') +
-        '<br/>Map: ' + this.model.get('map'));
+        '<br/>Location: ' + this.model.get('map'));
         
         this.el.tooltip({
             effect: "slide",
@@ -106,6 +106,19 @@ $(window).load(function() {
      else                            { this.el.addClass('unknown-value'); }
      
      this.setValue(gelPass);
+    },
+    
+    showPicoPass: function() {
+     var pico_pass = this.model.get('pico_pass');
+     this.removeColours();
+     
+     if      (pico_pass === null)    { this.el.addClass('unknown-value'); }
+     else if (pico_pass == 'Fail')   { this.el.addClass("red"); }
+     else if (pico_pass == 'Repeat') { this.el.addClass('orange'); }
+     else if (pico_pass == 'Pass')   { this.el.addClass("green"); }
+     else                            { this.el.addClass('unknown-value'); }
+     
+     this.setValue(pico_pass);
     }
     
   });
@@ -138,7 +151,8 @@ $(window).load(function() {
     events: {
       "click #showLocation":      "showLocations",
       "click #showConcentration": "showConcentrations",
-      "click #showGelQc":         "showGelQc"
+      "click #showGelQc":         "showGelQc",
+      "click #showPicoPass":      "showPicoPass"
     },
     
     viewControls: {
@@ -183,8 +197,15 @@ $(window).load(function() {
     showGelQc: function() {
      this.render(
        function(aliquot) { aliquot.view.showGelQc(); }
+     );
+     
+    },
+    
+    showPicoPass: function() {
+     this.render(
+       function(aliquot) { aliquot.view.showPicoPass(); }
      ); 
-    }
+    } 
   });
   
 

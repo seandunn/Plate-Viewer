@@ -118,7 +118,7 @@ a {
         background: #0085BC;
         @include border-bottom-left-radius(15px);
         @include border-bottom-right-radius(15px);
-        @include box-shadow(#3F3F3F, 1px, 1px);
+/*        @include box-shadow(#3F3F3F, 1px, 1px);*/
       }
     }  
   }
@@ -219,7 +219,7 @@ a {
   height:60px;
 /*  width:54px;*/
   padding: 6px;
-  margin: 1px;
+  margin: 0;
 /*  vertical-align: middle;*/
   text-align:     center;
   border: 3px ridge rgba(5,19,40,0.1);
