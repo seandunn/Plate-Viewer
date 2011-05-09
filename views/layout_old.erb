@@ -1,99 +1,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>
-      Sequencescape : Plate Viewer
-    </title>
-    <%#= stylesheet_link_tag "grids-min", "tabview","screen", :media => "all", :cache => false %>
-    <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen" title="screen" charset="utf-8">
-    <%#= formtastic_stylesheet_link_tag %>
-    <%#= javascript_include_tag 'jquery-1.5.1.min.js', 'underscore-min.js', 'backbone-min.js', 'backbone.rails.js', 'plate_viewer.js' %>
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<!--[if lt IE 8]>
+    <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<![endif]-->
 
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="icon" href="/images/favicon.ico" type="image/vnd.microsoft.icon" />
-  </head>
-  <body class="yui-skin-sam">
-    <div id="doc3" class="yui-t4">
-      <div id="hd">
-        <div id="logo_container">
-          <div id="sequencescape_logo">
-            <%#= link_to image_tag("new_logo.png", :size => "98x24"), :controller => root_path %>
-          </div>
+  <%# Keep stylesheet links above script links so that things load in the correct order... %>
+  <!-- <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.5.2.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.tools.min.js"></script> -->
+  <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js?foo"></script>
+
+  
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery-ui-1.8.11.custom.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/underscore-min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/backbone-min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/backbone.rails.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/plate_viewer.js"></script>
+  <title>Plate Viewer</title>
+</head>
+<body class='bp'>
+  <div id="container">
+    <div id="header">
+      <div id="header-top">
+        <div id="quick-links">
+            <a href="http://intweb/Software/launch">Wellcome Trust Sanger Institute</a>
         </div>
-        <div id="quick_links">
-          <div id="description" class="bar">
+        <div id="user-links">Welcome Frank &bull; Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      </div> <!-- End of header-top -->
+      
+      <div id="header-middle">
+        <div id="logo-container">
+          <img id="logo" src="/images/sequencescape_logo_new.png"/>
+          Sequencescape
+        </div> <!-- End of logo-container -->
+        
+        <div id="search">
+          <form method="get" action="/searches">
             <ul>
-              <li>
-                <span id="institute"><%#= link_to I18n.t('application.institute'), I18n.t('application.institute_link') %></span>
-              </li>
+              <li><label for="layout_search">Search</label></li>
+              <li><input id="layout_search" type="text" value="" size="20" name="q" /></li>
             </ul>
-          </div>
-          <div id="user_links" class="bar">
-            <ul><%# if logged_in? -%>
-              <li>
-                <%#= I18n.t('global_links.welcome') %> <%#= link_to current_user.name, profile_path(current_user) %> ·
-              </li>
-              <li>
-                <%#= I18n.t('global_links.workflow') %>
-                <%# unless current_user.workflow.nil? -%>
-                <%#= link_to current_user.workflow_name, edit_profile_path(current_user) %> ·
-                <%# else -%>
-                <strong><%#= link_to I18n.t('global_links.workflow_not_set'), edit_profile_path(current_user) %></strong> ·
-                <%# end -%>
-              </li>
-              <li>
-                <%#= link_to I18n.t('global_links.logout'), logout_path -%>
-              </li>
-              <%# end -%>
-            </ul>
-          </div><br clear="all" />
+            
+            
+          </form>
+        </div> <!-- End of search -->
+      </div> <!-- End of header-middle -->
+        
+      
+      <div id="main-menu-container">
+        <div id="main-menu">
+          <ul>
+            <li><a href="#">Studies</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Pipelines</a></li>
+            <li><a href="#">Batches</a></li>
+            <li><a href="#">Reception</a></li>
+            <li><a href="#">Lab View</a></li>
+            <li><a href="#">Lab Search</a></li>
+          </ul>
         </div>
-        <div id="header">
-          <div id='header_container'>
-            <div id='search'>
-            <%# form_tag searches_path, :method => :get do %>Search <%#= text_field_tag :q, "", :size => 20, :id => 'layout_search' %> <%# end %>
-            </div>
-            <div id="app_name">
-              <%#= link_to I18n.t('application.name').upcase, root_path %>
-            </div>
-          </div>
-          <div id="tab_bar">
-            <div id="tabs">
-              <ul>
-                <%#= render :partial => '/tab', :collection => @tabs.items %>
-              </ul>
-            </div><br clear="all" />
-          </div>
+      </div> <!-- End of main-main-container -->
+    </div> <!-- End of header -->
+    <div id="main-content">
+      <div id="yield-container">
+        <div id="yield">
+          <%= yield %>
         </div>
-      </div>
-      <div id="bd">
-        <div id="yui-main">
-          <div class="yui-b">
-            <%#= render_flashes %>
-            <div id="yield">
-              <%= yield %>
-            </div>
-          </div>
-        </div>
-        <div id="menu" class="yui-b">
-          <div class="callout">
-            <%#= image_tag "information.png", :size => "16x16" %><span style="vertical-align: middle;">If you need help using Sequencescape please email:</span> <span style="text-align: center"><%#= help_email_link %></span>
-          </div>
-          <div class="callout">
-            <%#= @title %>
-            <div id="links">
-              <%#= render :partial => "/menu" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="ft">
-        <div id="footer">
-          <%#= link_to "Feedback", "mailto:#{configatron.admin_email}" %> · <%#= Deployed::VERSION_STRING %> · A tool from <%#= link_to "Sequencing Informatics", "http://intweb/Software/launch" %>
-        </div>
-      </div>
+      </div>      
+      
+    </div> <!-- End of main-content -->
+    <div id="footer">
+    <a href="mailto:admin@test.com">Feedback</a>
+    · Sequencescape LOCAL [development] · A tool from
+    <a href="http://intweb/Software/launch">Sequencing Informatics</a>
     </div>
-  </body>
+  </div> <!-- End of container -->
+</body>
 </html>
