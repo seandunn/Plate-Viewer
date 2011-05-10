@@ -1,56 +1,74 @@
-// This import applies a global reset to any page that imports this stylesheet.
-/*@import "blueprint/reset";*/
-
-// To configure blueprint, edit the partials/base.sass file.
-/*@import "partials/base";*/
-
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
-
-// Combine the partials into a single screen stylesheet.
-/*@import "partials/page";*/
-/*@import "partials/form";*/
-/*@import "partials/two_col";*/
-@import "blueprint/liquid";
-
 // Compass Utils
 @import "compass/css3/box-shadow";
 @import "compass/utilities/lists/horizontal-list";
-@import "compass/utilities/links/hover-link";
+@import "compass/utilities/links";
 @import "compass/css3/border-radius";
 @import "compass/css3/gradient";
 
-@import "screen-optimised.scss";
 @import "jquery-ui-1.8.11.custom.scss";
+
+$font-size: 14px;
 
 body {
   background: #E3EEFC;
+  font-family:  'Lucida Grande',helvetica,arial,sans-serif;
+  line-height: 1.5;
+  font-size: 100% * $font-size / 16px;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.50em; }
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em; }
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1.00em; }
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em; }
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.50em; }
+h6 {
+  font-size: 1em;
+  font-weight: bold; }
   
-}
-
-#container {
-/*  width: 100%;*/
-}
-
 a {
   @include hover-link;
   @include link-colors(#fff, #ff0);
 }
 
-#header {
-/*  @include column(24);*/
+#page-header {
+  @include box-shadow(#C3CEDA, 1px, 1px, 2px);
+  @include border-radius;
 }
 
 #header-top {
-  @include column(24,true);
   @include linear-gradient(color-stops(#31353D,#212429));
-   border-top: 3px solid #055694;
-   color: #EFEFEF;
+  padding: 5px 9px 0;
+  color: #EFEFEF;
+  @include border-top-left-radius(5px);
+  @include border-top-right-radius(5px);
+  height: 18px;
    
+  #logo-container {
+    float:left;
+    text-transform: uppercase;
+    #logo { 
+      @include box-shadow(rgba(100,100,100,0.1), 1px, 1px, 1px);
+    }
+  }
+
   #quick-links {
     @include horizontal-list;
-    @include prepend(3);
-    @include column(15);
+    padding: 0 0 0 9px;
+    float:left;
     a {
       @include hover-link;
       @include link-colors(#fff, #ff0);
@@ -58,36 +76,21 @@ a {
   }
   
   #user-links {
-    @include column(6,true);
-/*    @include append(1);*/
+    float: right;
     text-align: right;
   }
   
 }
 
 #header-middle {
-  @include column(24,true);
+  height: 36px;
+  padding: 0 18px;
   @include linear-gradient(color-stops(#004578,#0085BC));
   color: #fff;
-  height: 36px;
-  #logo-container {
-    text-transform: uppercase;
-    @include push(1);
-    @include column(3);
-    position: absolute;
-    top: 2px;
-    left:0;
-    vertical-align: top;
-    #logo { 
-      height: 24px;
-      width: 98px;
-      @include box-shadow(rgba(100,100,100,0.1), 1px, 1px, 1px);
-    }
-  }
+  
   #search {
-    @include prepend(17);
-    @include column(5, true);
     float: right;
+    clear:left;
     ul { 
       text-align: right;
       @include horizontal-list;
@@ -95,12 +98,12 @@ a {
   }
 }
 
-#main-menu-container {
-  font-weight:700;
-  @include column(24,true);
-  @include linear-gradient(color-stops(#AAD4F4, #BCDDF4));
-  @include box-shadow(#999, 1px, 1px, 1px);
   #main-menu {
+  @include border-bottom-left-radius(5px);
+  @include border-bottom-right-radius(5px);
+  padding: 2px 0;
+  font-weight:700;
+  @include linear-gradient(color-stops(#AED9F4, #A3D4F4));
     ul {
       @include horizontal-list;
 
@@ -109,44 +112,30 @@ a {
         text-transform: uppercase;
       }
       a {
-        padding:1px 15px 3px;
+        padding: 0 9px;
         color: #31353D;
         text-decoration: none;
       }
       a:hover {
         color: #fff;
         background: #0085BC;
-        @include border-bottom-left-radius(15px);
-        @include border-bottom-right-radius(15px);
-/*        @include box-shadow(#3F3F3F, 1px, 1px);*/
+        @include border-radius(5px);
       }
     }  
   }
-}
 
 #main-content {
-  padding-top: 18px;
-/*  @include prepend(1);*/
-  @include column(24,true);
+  margin-top: 18px;
+  padding: 9px 18px;
 /*  border: 1px solid black;*/
-}
-
-#yield-container {
-  @include push(1);
   @include border-radius;
-  @include column(23,true);
   background: #fff;
 /*  border: 1px solid #ccc;*/
   @include box-shadow(#BFBFBF, 1px, 1px, 3px)
 }
-#yield {
-  @include push(1);
-  @include column(24);
-}
 
 #page-menu {
   @include border-radius;
-  @include column(4,true);
 
   ul.page-menu-entry {
     @include border-radius;
@@ -159,17 +148,20 @@ a {
 }
 
 
-#footer {
+#page-footer {
   padding: 3px 0px 0px 10px;
   line-height: 17px;
   padding-bottom: 20px;
   color: #666;
 }
 
-#footer a {
+#page-footer a {
   @include link-colors(#000,#880000);
 }
 
+#plate-control {
+  margin: 18px 0;
+}
 
 #plate {
   @include box-shadow(#000, 2px, 2px, 5px);
@@ -209,17 +201,10 @@ a {
 /*  height: 65px;*/
 }
 
-#plate td {
-  padding:0;
-  margin:0;
-}
-
-
 #plate .well {
   height:60px;
 /*  width:54px;*/
   padding: 6px;
-  margin: 0;
 /*  vertical-align: middle;*/
   text-align:     center;
   border: 3px ridge rgba(5,19,40,0.1);
@@ -236,11 +221,12 @@ a {
   vertical-align: middle;
   text-align:     center;
   color:#fff;
-  @include box-shadow(#00192B, 3px, 3px, 7px);
+  @include box-shadow(#00192B, 3px, 3px, 10px);
 }
 
 .aliquot:hover {
   color: #FFD600;
+  @include box-shadow(#00192B, 0px, 0px, 1px);
 }
 
 #plate .green {
@@ -308,7 +294,7 @@ a {
   border:3px solid #fff;
   @include border-radius(5px);
   /* CSS3 styling for latest browsers */
-/*  -moz-box-shadow:1px 1px 90px 5px #000;*/
+  -moz-box-shadow:1px 1px 9px #000;
 /*  -webkit-box-shadow: 0 0 90px #000;  */
 }
 

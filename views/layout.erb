@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <!--[if lt IE 8]>
     <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -21,62 +21,45 @@
   <script type="text/javascript" charset="utf-8" src="/javascripts/plate_viewer.js"></script>
   <title>Plate Viewer</title>
 </head>
-<body class='bp'>
-  <div id="container">
-    <div id="header">
-      <div id="header-top">
-        <div id="quick-links">
-            <a href="http://intweb/Software/launch">Wellcome Trust Sanger Institute</a>
-        </div>
-        <div id="user-links">Welcome Frank &bull; Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-      </div> <!-- End of header-top -->
+<body>
+  <header id="page-header">
+    <div id="header-top">
+      <div id="logo-container">
+        <img id="logo" src="/images/sequencescape_logo_new.png"/>
+        <div>Sequencescape</div>
+      </div> <!-- End of logo-container -->
+      <div id="quick-links">
+          <a href="http://intweb/Software/launch">Wellcome Trust Sanger Institute</a>
+      </div>
+      <div id="user-links">Welcome Frank &bull; Logout</div>
+    </div> <!-- End of header-top -->
+    
+    <div id="header-middle">
+      &nbsp;
+    </div> <!-- End of header-middle -->
       
-      <div id="header-middle">
-        <div id="logo-container">
-          <img id="logo" src="/images/sequencescape_logo_new.png"/>
-          Sequencescape
-        </div> <!-- End of logo-container -->
-        
-        <div id="search">
-          <form method="get" action="/searches">
-            <ul>
-              <li><label for="layout_search">Search</label></li>
-              <li><input id="layout_search" type="text" value="" size="20" name="q" /></li>
-            </ul>
-            
-            
-          </form>
-        </div> <!-- End of search -->
-      </div> <!-- End of header-middle -->
-        
-      
-      <div id="main-menu-container">
-        <div id="main-menu">
-          <ul>
-            <li><a href="#">Studies</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Pipelines</a></li>
-            <li><a href="#">Batches</a></li>
-            <li><a href="#">Reception</a></li>
-            <li><a href="#">Lab View</a></li>
-            <li><a href="#">Lab Search</a></li>
-          </ul>
-        </div>
-      </div> <!-- End of main-main-container -->
-    </div> <!-- End of header -->
-    <div id="main-content">
-      <div id="yield-container">
-        <div id="yield">
-          <%= yield %>
-        </div>
-      </div>      
-      
-    </div> <!-- End of main-content -->
-    <div id="footer">
+    
+    <nav id="main-menu">
+      <ul>
+        <li><a href="#">Studies</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Pipelines</a></li>
+        <li><a href="#">Batches</a></li>
+        <li><a href="#">Reception</a></li>
+        <li><a href="#">Lab View</a></li>
+        <li><a href="#">Lab Search</a></li>
+      </ul>
+    </nav>
+  </header> <!-- End of page_header -->
+    
+  <section id="main-content">
+    <%= yield %>
+  </section>      
+    
+  <footer id="page-footer">
     <a href="mailto:admin@test.com">Feedback</a>
     · Sequencescape LOCAL [development] · A tool from
     <a href="http://intweb/Software/launch">Sequencing Informatics</a>
-    </div>
-  </div> <!-- End of container -->
+  </footer>
 </body>
 </html>
