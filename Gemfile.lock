@@ -9,16 +9,23 @@ GEM
     extlib (0.9.15)
     haml (3.0.25)
     highline (1.6.1)
-    rack (1.2.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    rack (2.2.3)
+    rack-protection (2.2.0)
+      rack
+    ruby2_keywords (0.0.5)
     sass (3.1.0.alpha.252)
-    sinatra (1.2.1)
-      rack (~> 1.1)
-      tilt (< 2.0, >= 1.2.2)
+    sinatra (2.2.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.0)
+      tilt (~> 2.0)
     templater (1.0.0)
       diff-lcs (>= 1.1.2)
       extlib (>= 0.9.5)
       highline (>= 1.4.0)
-    tilt (1.2.2)
+    tilt (2.0.10)
 
 PLATFORMS
   ruby
